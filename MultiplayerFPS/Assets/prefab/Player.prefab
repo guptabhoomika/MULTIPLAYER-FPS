@@ -17,9 +17,12 @@ GameObject:
   - component: {fileID: 412296921869892944}
   - component: {fileID: 3574851136597680131}
   - component: {fileID: 3275038360230905368}
-  m_Layer: 0
+  - component: {fileID: 1138507727569107710}
+  - component: {fileID: 9064573780157936328}
+  - component: {fileID: 3010425947752856332}
+  m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +35,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5530445863289900980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.248, z: -9.72}
+  m_LocalPosition: {x: 0, y: 4.248, z: -9.473}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5530445864110608194}
@@ -62,7 +65,7 @@ Rigidbody:
   m_GameObject: {fileID: 5530445863289900980}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 4
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -83,6 +86,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lookSensitivity: 3
+  thurstSpeed: 1200
+  jointDrive: 1
+  jointSpring: 15
+  jointMaxforce: 40
 --- !u!114 &5530445863289900971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5530445864110608192}
+  cameraRotationLimit: 85
 --- !u!114 &5568840079574102477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +154,8 @@ MonoBehaviour:
   - {fileID: 5530445863289900971}
   - {fileID: 5530445864110608192}
   - {fileID: 5530445864110608195}
+  - {fileID: 9064573780157936328}
+  layerToname: RemotePlayer
 --- !u!114 &3574851136597680131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +198,137 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.2
   m_InterpolateMovement: 0
+--- !u!153 &1138507727569107710
+ConfigurableJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5530445863289900980}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 4.248, z: -9.473}
+  serializedVersion: 2
+  m_SecondaryAxis: {x: 0, y: 1, z: 0}
+  m_XMotion: 2
+  m_YMotion: 2
+  m_ZMotion: 2
+  m_AngularXMotion: 2
+  m_AngularYMotion: 2
+  m_AngularZMotion: 2
+  m_LinearLimitSpring:
+    spring: 0
+    damper: 0
+  m_LinearLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_AngularXLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowAngularXLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_HighAngularXLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_AngularYZLimitSpring:
+    spring: 0
+    damper: 0
+  m_AngularYLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_AngularZLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_TargetPosition: {x: 0, y: 0, z: 0}
+  m_TargetVelocity: {x: 0, y: 0, z: 0}
+  m_XDrive:
+    serializedVersion: 3
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+  m_YDrive:
+    serializedVersion: 3
+    positionSpring: 20
+    positionDamper: 0
+    maximumForce: 40
+  m_ZDrive:
+    serializedVersion: 3
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
+  m_RotationDriveMode: 0
+  m_AngularXDrive:
+    serializedVersion: 3
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+  m_AngularYZDrive:
+    serializedVersion: 3
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+  m_SlerpDrive:
+    serializedVersion: 3
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 40
+  m_ProjectionMode: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_ConfiguredInWorldSpace: 0
+  m_SwapBodies: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!114 &9064573780157936328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5530445863289900980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60eb60e2bc2201d4eb74511ca1fc5a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 5530445864110608192}
+  weapon:
+    name: clock
+    damage: 100
+    range: 200
+  mask:
+    serializedVersion: 2
+    m_Bits: 1335
+--- !u!114 &3010425947752856332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5530445863289900980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7b297a2312cddb43ba1f798474b45f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  onDeadDisable:
+  - {fileID: 5530445863289900968}
+  - {fileID: 9064573780157936328}
 --- !u!1 &5530445863744736560
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5530445863744736561}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +371,7 @@ GameObject:
   - component: {fileID: 5530445864110608194}
   - component: {fileID: 5530445864110608192}
   - component: {fileID: 5530445864110608195}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5530445864110608205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.042, y: 0.018, z: -0.071}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5530445865137817531}
@@ -313,7 +454,7 @@ GameObject:
   - component: {fileID: 5530445864493795287}
   - component: {fileID: 5530445864493795285}
   - component: {fileID: 5530445864493795284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5530445865137817531}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +563,7 @@ GameObject:
   - component: {fileID: 5530445865161669344}
   - component: {fileID: 5530445865161669347}
   - component: {fileID: 5530445865161669346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5530445865161669356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4088, y: -0.3697, z: 1.5738}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 0.1824, y: 0.2606, z: 0.82175976}
   m_Children: []
   m_Father: {fileID: 5530445865137817531}
