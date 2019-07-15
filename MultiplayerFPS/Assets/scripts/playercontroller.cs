@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(playerMotor))]
 [RequireComponent(typeof(ConfigurableJoint))]
+[RequireComponent(typeof(Animator))]
 
 public class playercontroller : MonoBehaviour
 {
@@ -23,21 +24,25 @@ public class playercontroller : MonoBehaviour
 
 
     ConfigurableJoint joint;
+
+    private Animator animator;
     
     playerMotor motor;
     private void Start()
     {
         motor = GetComponent<playerMotor>();
         joint = GetComponent<ConfigurableJoint>();
+        animator = GetComponent<Animator>();
         setJointSettings(jointSpring);
     }
     private void Update()
     {
-        float _xmov = Input.GetAxisRaw("Horizontal");
-        float _zmov = Input.GetAxisRaw("Vertical");
+        float _xmov = Input.GetAxis("Horizontal");
+        float _zmov = Input.GetAxis("Vertical");
         Vector3 _moveHorizontal = transform.right * _xmov;
         Vector3 _moveVertical = transform.forward * _zmov;
-        Vector3 velocity = (_moveHorizontal + _moveVertical).normalized * speed;
+        Vector3 velocity = (_moveHorizontal + _moveVertical) * speed;
+        animator.SetFloat("Blend", _zmov);
         motor.move(velocity);
         float _yrot = Input.GetAxisRaw("Mouse X");
         Vector3 _rotation = new Vector3(0f, _yrot, 0f) * lookSensitivity;
