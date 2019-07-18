@@ -7,9 +7,14 @@ public class playerShoot : NetworkBehaviour
     private const string PLAYER_TAG = "Player";
     [SerializeField]
     private Camera cam;
-    public playerWeapon weapon;
+    [SerializeField]
+    private playerWeapon weapon;
     [SerializeField]
     private LayerMask mask;
+    [SerializeField]
+    private GameObject weaponGFX;
+    [SerializeField]
+    private string WeaponLayerName = "Weapon";
 
     private void Start()
     {
@@ -18,6 +23,8 @@ public class playerShoot : NetworkBehaviour
             Debug.LogError("Camera missing");
             this.enabled = false;
         }
+
+        weaponGFX.layer = LayerMask.NameToLayer(WeaponLayerName);
         
     }
     private void Update()
