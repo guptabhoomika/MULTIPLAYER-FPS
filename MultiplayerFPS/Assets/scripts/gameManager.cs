@@ -7,6 +7,10 @@ public class gameManager : MonoBehaviour
 
     public static gameManager instance;
     public MatchSettings matchsettings;
+
+    [SerializeField]
+    private GameObject sceneCam;
+
     private void Awake()
     {
         if(instance!=null)
@@ -52,4 +56,12 @@ public class gameManager : MonoBehaviour
         GUILayout.EndArea();
     }
     #endregion
+
+    public void SetCameraActive(bool isactive)
+    {
+        if (sceneCam == null)
+            return;
+        sceneCam.SetActive(isactive);
+
+    }
 }

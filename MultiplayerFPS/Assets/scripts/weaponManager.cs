@@ -17,6 +17,7 @@ public class weaponManager : NetworkBehaviour
     private Transform weaponHolder;
 
     private playerWeapon currentWeapon;
+    private weaponGfx currentGfx;
 
 
     void Start()
@@ -29,6 +30,10 @@ public class weaponManager : NetworkBehaviour
     {
         return currentWeapon;
     }
+    public weaponGfx getCurrentWeaponGfx()
+    {
+        return currentGfx;
+    }
 
 
     void EquipWeapon(playerWeapon _weapon)
@@ -36,8 +41,15 @@ public class weaponManager : NetworkBehaviour
         currentWeapon = _weapon;
        GameObject weaponIns = (GameObject) Instantiate(_weapon.weaponGfx, weaponHolder.position, weaponHolder.rotation);
         weaponIns.transform.SetParent(weaponHolder);
+
+        currentGfx = weaponIns.GetComponent<weaponGfx>();
+        if(currentGfx == null)
+        {
+            Debug.LogError("Graphics Not Attached");
+        }
+
         if (isLocalPlayer)
-            weaponIns.layer = LayerMask.NameToLayer(WeaponLayerName);
+            Utility.SetLayerReccursively(weaponIns, LayerMask.NameToLayer(WeaponLayerName));
     }
 
    

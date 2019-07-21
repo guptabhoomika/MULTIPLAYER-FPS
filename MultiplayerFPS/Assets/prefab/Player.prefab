@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349853347143370135}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.08, y: -0.89, z: 2.61}
+  m_LocalPosition: {x: 1.4, y: -1.39, z: 2.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5530445864110608194}
@@ -68,7 +68,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5530445863289900980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.99, y: 1.35, z: 4.98}
+  m_LocalPosition: {x: 0.15, y: 1.73, z: 5.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5530445864110608194}
@@ -123,6 +123,11 @@ MonoBehaviour:
   jointDrive: 1
   jointSpring: 15
   jointMaxforce: 40
+  environmentMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  fuelBurnspeed: 1
+  fuelregainSpeed: 0.3
 --- !u!114 &5530445863289900971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +192,7 @@ MonoBehaviour:
   - {fileID: 5530445863289900971}
   - {fileID: 5530445864110608192}
   - {fileID: 5530445864110608195}
-  - {fileID: 9064573780157936328}
+  - {fileID: 0}
   - {fileID: 8815020003210705766}
   - {fileID: 4711305468720831772}
   layerToname: RemotePlayer
@@ -195,6 +200,7 @@ MonoBehaviour:
   playerGraphics: {fileID: 5530445863744736560}
   playerUIPrefab: {fileID: 6316761002235008043, guid: cdc2ba35e9a6b3f45a87884e18b05b0f,
     type: 3}
+  playerUI: {fileID: 0}
 --- !u!114 &3574851136597680131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +254,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.99, y: 1.35, z: 4.98}
+  m_ConnectedAnchor: {x: 0.15, y: 1.73, z: 5.38}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -364,6 +370,11 @@ MonoBehaviour:
   onDeadDisable:
   - {fileID: 5530445863289900968}
   - {fileID: 9064573780157936328}
+  onDeadGameobjectDisable:
+  - {fileID: 5530445863744736560}
+  - {fileID: 5530445864110608205}
+  deadEffect: {fileID: 222001901, guid: 64c99ece9e8be114eb510fc523c06d88, type: 3}
+  spawnEffect: {fileID: 100000, guid: a556e56ad01d1094d94a8017e5222771, type: 3}
 --- !u!95 &8815020003210705766
 Animator:
   serializedVersion: 3
@@ -400,9 +411,8 @@ MonoBehaviour:
     name: primary
     damage: 40
     range: 200
-    weaponGfx: {fileID: 7874861124254135886, guid: 9baadf3cc5d93c64b9cc4ede6df3093e,
-      type: 3}
-    firerate: 2
+    weaponGfx: {fileID: 43, guid: 9baadf3cc5d93c64b9cc4ede6df3093e, type: 3}
+    firerate: 0
   weaponHolder: {fileID: 6600290173702135532}
 --- !u!114 &37258208
 MonoBehaviour:
@@ -448,7 +458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5530445863744736560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.32, y: 0.61, z: 0.92}
+  m_LocalPosition: {x: 1.63, y: -2.12, z: 0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4432333450675786976}
@@ -519,7 +529,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1847
+    m_Bits: 10039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

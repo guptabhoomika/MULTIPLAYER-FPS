@@ -56,9 +56,43 @@ public class playerShoot : NetworkBehaviour
 
 
     }
+
+    [Command]
+    void CmdOnShoot()
+    {
+        RpcDoShootEffect();
+    }
+
+    [ClientRpc]
+    void RpcDoShootEffect()
+    {
+        WeaponManager.getCurrentWeaponGfx().MuzzleFlask.Play();
+    }
+    [Command]
+    void CmdonHit(Vector3 _pos , Vector3 _normal)
+    {
+        RpcOnHitEffect(_pos, _normal);
+    }
+
+    [ClientRpc]
+    void RpcOnHitEffect(Vector3 _pos , Vector3 _normal)
+    {
+
+        GameObject _hitEffect =(GameObject)Instantiate(WeaponManager.getCurrentWeaponGfx().hitEffectPrefab, _pos, Quaternion.LookRotation(_normal));
+        Destroy(_hitEffect, 2f);
+    }
+
+
     [Client]
     void shoot()
     {
+
+        if(!isLocalPlayer)
+        {
+            return;
+        }
+
+        CmdOnShoot();
         Debug.Log("shoot");
         RaycastHit _hit;
 
@@ -69,6 +103,7 @@ public class playerShoot : NetworkBehaviour
             {
                 CmdPlayershoot(_hit.collider.name , currentweapon.damage);
             }
+            CmdonHit(_hit.point, _hit.normal);
         }
 
     }

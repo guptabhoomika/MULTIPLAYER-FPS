@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 [RequireComponent(typeof(Player))]
+[RequireComponent(typeof(playercontroller))]
 
 public class playerSetup : NetworkBehaviour
 {
@@ -16,10 +17,11 @@ public class playerSetup : NetworkBehaviour
     GameObject playerGraphics;
     [SerializeField]
     GameObject playerUIPrefab;
-    private GameObject playerUI;
+    [HideInInspector]
+    public GameObject playerUI;
 
 
-    Camera sceneCamera;
+   
     private void Start()
     {
         if(!isLocalPlayer)
@@ -31,20 +33,23 @@ public class playerSetup : NetworkBehaviour
         }
         else
         {
-            sceneCamera = Camera.main;
-            if(sceneCamera != null)
-            {
-                sceneCamera.gameObject.SetActive(false);
-
-            }
+           
             setLayerRecurssive(playerGraphics, LayerMask.NameToLayer(DontDrawLayerName));
 
            playerUI=  Instantiate(playerUIPrefab);
             playerUI.name = playerUIPrefab.name;
-               
+            PlayerUI ui = playerUI.GetComponent<PlayerUI>();
+            if(ui == null)
+            {
+                Debug.LogError("No UI Attached");
+            }
+            ui.SetPlayerController(GetComponent<playercontroller>());
+
+            GetComponent<Player>().Setup();
         }
 
-        GetComponent<Player>().Setup();
+
+      
 
         
        
@@ -86,10 +91,12 @@ public class playerSetup : NetworkBehaviour
     private void OnDisable()
     {
         Destroy(playerUI);
-        if(sceneCamera!= null)
+        if (isLocalPlayer)
         {
-            sceneCamera.gameObject.SetActive(true);
+            gameManager.instance.SetCameraActive(true);
+
         }
+
         gameManager.DergisterPlayer(transform.name);
     }
 }

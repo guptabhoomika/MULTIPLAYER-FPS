@@ -22,12 +22,27 @@ public class playercontroller : MonoBehaviour
     [SerializeField]
     private float jointMaxforce= 40f;
 
+    [SerializeField]
+    private LayerMask environmentMask;
+
+    [SerializeField]
+    private float fuelBurnspeed = 1f;
+    [SerializeField]
+    private float fuelregainSpeed = 0.3f;
+    private float actuaFuelamt = 1f;
+
+
+
 
     ConfigurableJoint joint;
 
     private Animator animator;
     
     playerMotor motor;
+    public float getFuelAmt()
+    {
+        return actuaFuelamt;
+    }
     private void Start()
     {
         motor = GetComponent<playerMotor>();
@@ -37,6 +52,16 @@ public class playercontroller : MonoBehaviour
     }
     private void Update()
     {
+        RaycastHit _Hit;
+        if(Physics.Raycast(transform.position , Vector3.down , out _Hit, 100f , environmentMask))
+        {
+            joint.targetPosition = new Vector3(0f, -_Hit.point.y, 0f);
+        }
+        else
+        {
+            joint.targetPosition = new Vector3(0f, 0f, 0f);
+        }
+
         float _xmov = Input.GetAxis("Horizontal");
         float _zmov = Input.GetAxis("Vertical");
         Vector3 _moveHorizontal = transform.right * _xmov;
@@ -51,15 +76,25 @@ public class playercontroller : MonoBehaviour
         float _camerarotationX = _xrot * lookSensitivity;
         motor.getCameraRotation(_camerarotationX);
         Vector3 thrusterForce = Vector3.zero;
-        if(Input.GetButton("Jump"))
+        if(Input.GetButton("Jump") &&  actuaFuelamt >0f)
         {
-            thrusterForce = Vector3.up * thurstSpeed;
-            setJointSettings(0f);
+            actuaFuelamt -= fuelBurnspeed * Time.deltaTime;
+            if(actuaFuelamt >= 0.01f)
+            {
+                thrusterForce = Vector3.up * thurstSpeed;
+                setJointSettings(0f);
+
+            }
+            
         }
         else
         {
+            actuaFuelamt += fuelregainSpeed * Time.deltaTime;
             setJointSettings(jointSpring);
         }
+
+        actuaFuelamt = Mathf.Clamp(actuaFuelamt, 0f, 1f);
+
         motor.ApplyThrust(thrusterForce);
 
 
