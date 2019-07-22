@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 9
   m_Name: weaponHolder
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349853347143370135}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.4, y: -1.39, z: 2.26}
+  m_LocalPosition: {x: 1.62, y: -1.62, z: 3.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5530445864110608194}
@@ -68,7 +68,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5530445863289900980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 1.73, z: 5.38}
+  m_LocalPosition: {x: -1.01, y: 2.01, z: 5.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5530445864110608194}
@@ -192,9 +192,8 @@ MonoBehaviour:
   - {fileID: 5530445863289900971}
   - {fileID: 5530445864110608192}
   - {fileID: 5530445864110608195}
-  - {fileID: 0}
-  - {fileID: 8815020003210705766}
   - {fileID: 4711305468720831772}
+  - {fileID: 8815020003210705766}
   layerToname: RemotePlayer
   DontDrawLayerName: DontDraw
   playerGraphics: {fileID: 5530445863744736560}
@@ -254,7 +253,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.15, y: 1.73, z: 5.38}
+  m_ConnectedAnchor: {x: -1.01, y: 2.01, z: 5.16}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -374,7 +373,7 @@ MonoBehaviour:
   - {fileID: 5530445863744736560}
   - {fileID: 5530445864110608205}
   deadEffect: {fileID: 222001901, guid: 64c99ece9e8be114eb510fc523c06d88, type: 3}
-  spawnEffect: {fileID: 100000, guid: a556e56ad01d1094d94a8017e5222771, type: 3}
+  spawnEffect: {fileID: 46, guid: a556e56ad01d1094d94a8017e5222771, type: 3}
 --- !u!95 &8815020003210705766
 Animator:
   serializedVersion: 3
@@ -409,7 +408,7 @@ MonoBehaviour:
   WeaponLayerName: Weapon
   primaryWeapon:
     name: primary
-    damage: 40
+    damage: 100
     range: 200
     weaponGfx: {fileID: 43, guid: 9baadf3cc5d93c64b9cc4ede6df3093e, type: 3}
     firerate: 0
@@ -458,7 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5530445863744736560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.63, y: -2.12, z: 0.09}
+  m_LocalPosition: {x: 2.48, y: -2.12, z: 0.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4432333450675786976}
@@ -491,7 +490,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5530445864110608205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.82, y: -0.75, z: -0.7}
+  m_LocalPosition: {x: 2.08, y: -0.87, z: -2.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6033685218955899174}
@@ -574,7 +573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8440529166598353084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.14, z: 0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5530445864110608194}

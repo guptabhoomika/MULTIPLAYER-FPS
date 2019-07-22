@@ -167,10 +167,13 @@ public class Player : NetworkBehaviour
 
         yield return new WaitForSeconds(0.1f);
 
-        Setup(); 
+        Setup();
 
+       
 
         Debug.Log("respawned");
+
+      
     }
 
     public void SetDefault()
@@ -199,12 +202,14 @@ public class Player : NetworkBehaviour
             _col.enabled = true;
         }
 
-      
-
-
-
-        GameObject respawnins= (GameObject)Instantiate(spawnEffect, transform.position, Quaternion.identity);
+        GameObject respawnins = (GameObject)Instantiate(spawnEffect, transform.position, Quaternion.identity);
         Destroy(respawnins, 3f);
+
+
+
+
+
+
 
 
     }

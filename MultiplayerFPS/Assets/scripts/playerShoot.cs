@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 
 public class playerShoot : NetworkBehaviour
 {
+    [SerializeField]
     private const string PLAYER_TAG = "Player";
     [SerializeField]
     private Camera cam;
@@ -93,7 +94,7 @@ public class playerShoot : NetworkBehaviour
         }
 
         CmdOnShoot();
-        Debug.Log("shoot");
+        
         RaycastHit _hit;
 
 
