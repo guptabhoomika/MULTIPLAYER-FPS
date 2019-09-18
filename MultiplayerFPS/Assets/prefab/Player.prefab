@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 8815020003210705766}
   - component: {fileID: 2932376411329640856}
   - component: {fileID: 37258208}
+  - component: {fileID: 5427858883516289067}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -194,11 +195,11 @@ MonoBehaviour:
   - {fileID: 5530445864110608195}
   - {fileID: 4711305468720831772}
   - {fileID: 8815020003210705766}
+  - {fileID: 5427858883516289067}
   layerToname: RemotePlayer
   DontDrawLayerName: DontDraw
   playerGraphics: {fileID: 5530445863744736560}
-  playerUIPrefab: {fileID: 6316761002235008043, guid: cdc2ba35e9a6b3f45a87884e18b05b0f,
-    type: 3}
+  playerUIPrefab: {fileID: 87, guid: cdc2ba35e9a6b3f45a87884e18b05b0f, type: 3}
   playerUI: {fileID: 0}
 --- !u!114 &3574851136597680131
 MonoBehaviour:
@@ -366,6 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  kills: 0
   onDeadDisable:
   - {fileID: 5530445863289900968}
   - {fileID: 9064573780157936328}
@@ -433,6 +435,18 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.3
   m_InterpolateMovement: 0
+--- !u!114 &5427858883516289067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5530445863289900980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e736213cd088294489b03a8805a4214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5530445863744736560
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,6 +35,9 @@ public class playerShoot : NetworkBehaviour
     private void Update()
     {
         currentweapon = WeaponManager.getCurrentWeapon();
+        if (pauseMenu.isOn)
+            return;
+
         if(currentweapon.firerate <= 0f)
         {
             if (Input.GetButtonDown("Fire1"))
@@ -102,19 +105,19 @@ public class playerShoot : NetworkBehaviour
         {
            if(_hit.collider.tag== PLAYER_TAG)
             {
-                CmdPlayershoot(_hit.collider.name , currentweapon.damage);
+                CmdPlayershoot(_hit.collider.name , currentweapon.damage, transform.name);
             }
             CmdonHit(_hit.point, _hit.normal);
         }
 
     }
     [Command]
-    void CmdPlayershoot(string _playerID , int _damage)
+    void CmdPlayershoot(string _playerID , int _damage, string sourceID)
     {
         Debug.Log(_playerID + "has been shot");
 
         Player _player = gameManager.getPlayer(_playerID);
-        _player.RpcTakeDamage(_damage);
+        _player.RpcTakeDamage(_damage, sourceID);
 
 
     

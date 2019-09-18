@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6649670701688149897}
   - component: {fileID: 6649670701688149896}
   - component: {fileID: 6649670701688149899}
+  - component: {fileID: 2133411939}
+  - component: {fileID: 2450520023224439142}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -128,6 +130,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  showGUI: 1
+  showGUI: 0
   offsetX: 0
   offsetY: 0
+--- !u!114 &2133411939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649670701688149898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea9ffb9e31fc8047aad77659cf2ee5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomSize: 5
+--- !u!114 &2450520023224439142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649670701688149898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f73c0f4ed004f7459a03bd34ccac432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusText: {fileID: 0}
+  roomListprefab: {fileID: 6273236572469386353, guid: e61f2e00d4725844d96054096c361db4,
+    type: 3}
+  roomListParent: {fileID: 0}

@@ -41,7 +41,7 @@ public class gameManager : MonoBehaviour
     {
         return players[_playerID];
     }
-    private void OnGUI()
+   /* private void OnGUI()
     {
         GUILayout.BeginArea(new Rect(200 ,200 , 200, 500));
         GUILayout.BeginVertical();
@@ -54,7 +54,7 @@ public class gameManager : MonoBehaviour
 
         GUILayout.EndVertical();
         GUILayout.EndArea();
-    }
+    }*/
     #endregion
 
     public void SetCameraActive(bool isactive)

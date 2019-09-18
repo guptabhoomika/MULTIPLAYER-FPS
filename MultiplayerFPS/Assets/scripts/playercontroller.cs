@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
 [RequireComponent(typeof(playerMotor))]
 [RequireComponent(typeof(ConfigurableJoint))]
 [RequireComponent(typeof(Animator))]
@@ -52,6 +54,9 @@ public class playercontroller : MonoBehaviour
     }
     private void Update()
     {
+
+        if (pauseMenu.isOn)
+            return;
         RaycastHit _Hit;
         if(Physics.Raycast(transform.position , Vector3.down , out _Hit, 100f , environmentMask))
         {

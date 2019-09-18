@@ -23,6 +23,8 @@ public class Player : NetworkBehaviour
     [SerializeField]
     private int maxHealth = 100;
 
+    public int kills;
+
 
     [SyncVar]
     private int currentHealth;
@@ -94,35 +96,43 @@ public class Player : NetworkBehaviour
 
     }
 
-    private void Update()
-    {
+   /* private void Update()
+   {
         if (!isLocalPlayer)
-            return;
+           return;
         if(Input.GetKeyDown(KeyCode.K))
         {
             RpcTakeDamage(10000);
         }
 
            
-    }
+    }*/
 
     [ClientRpc]
-    public void RpcTakeDamage(int _damage)
+    public void RpcTakeDamage(int _damage, string _sourceID)
     {
         if (isdead)
             return;
         currentHealth -= _damage;
         if(currentHealth <= 0)
         {
-            Die();
+            Die(_sourceID);
         }
     }
 
 
-    private void Die()
+    private void Die(string _sourceId)
     {
 
         isdead = true;
+
+        Player sourcePlayer = gameManager.getPlayer(_sourceId);
+        if(sourcePlayer!= null)
+        {
+            sourcePlayer.kills++;
+        }
+ 
+
         for (int i = 0; i < onDeadDisable.Length; i++)
         {
             onDeadDisable[i].enabled = false;
